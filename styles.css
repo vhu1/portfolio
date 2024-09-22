@@ -1,162 +1,195 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Styles */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #121212;
-    color: #fff;
-    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
+    background-color: #121212;
+    color: white;
     overflow-x: hidden;
-    position: relative;
-}
-
-.container {
+  }
+  
+  h1, h2 {
+    color: #00e5ff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  p.subtitle {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    text-align: center;
+  }
+  
+  .dark-section {
+    padding: 100px 0;
+    background-color: #121212;
+  }
+  
+  .container {
     width: 90%;
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
-}
-
-header {
-    background: #000;
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.logo {
-    font-size: 2em;
-    color: #ff00ff;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-around;
-}
-
-nav ul li {
-    list-style: none;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #ffcc00;
-}
-
-.hero-section {
+  }
+  
+  /* Landing Section */
+  #landing {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background: url('background.jpg') no-repeat center center/cover;
+    position: relative;
+  }
+  
+  .landing-content {
     text-align: center;
-    background: radial-gradient(circle, #333, #000);
-    padding: 60px 0;
-}
-
-.hero-section h1 {
+    z-index: 10;
+    padding-bottom: 30px;
+  }
+  
+  #typed-name {
+    color: #00e5ff;
     font-size: 3rem;
-    margin-bottom: 20px;
-    animation: fadeInDown 2s ease-in-out;
-}
-
-.hero-section p {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-}
-
-.cta-button {
-    padding: 15px 30px;
-    background: #ff00ff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.cta-button:hover {
-    background: #ffcc00;
-}
-
-.about-section, .projects-section, .contact-section {
-    padding: 80px 0;
-    text-align: center;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.project-item {
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.project-item:hover {
-    transform: scale(1.05);
-}
-
-footer {
-    text-align: center;
-    margin: 40px 0;
-}
-
-.neon-background {
+  }
+  
+  .cube-container {
     position: absolute;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(135deg, #ff00ff, #ffcc00);
-    z-index: -1;
-    opacity: 0.1;
-    animation: background-animate 8s infinite alternate;
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes background-animate {
-    0% {
-        transform: scale(1) rotate(0deg);
-    }
-    100% {
-        transform: scale(1.5) rotate(360deg);
-    }
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-    }
-    
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-}
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    z-index: 1;
+    perspective: 1000px; /* Add 3D perspective */
+  }
+  
+  .cube {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    transform: rotateX(45deg) rotateY(45deg);
+    animation: rotate 10s infinite linear;
+  }
+  
+  .face {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: #00e5ff;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #121212;
+  }
+  
+  /* Position faces of the cube */
+  .front  { transform: translateZ(75px); }
+  .back   { transform: rotateY(180deg) translateZ(75px); }
+  .left   { transform: rotateY(-90deg) translateZ(75px); }
+  .right  { transform: rotateY(90deg) translateZ(75px); }
+  .top    { transform: rotateX(90deg) translateZ(75px); }
+  .bottom { transform: rotateX(-90deg) translateZ(75px); }
+  
+  @keyframes rotate {
+    from { transform: rotateX(0deg) rotateY(0deg); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+  }
+  
+  /* Portfolio Section */
+  .card-container {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+  }
+  
+  .card {
+    width: 250px;
+    height: 350px;
+    perspective: 1000px;
+  }
+  
+  .card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+  }
+  
+  .card-front {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+  
+  .card-back {
+    background-color: #00e5ff;
+    transform: rotateY(180deg);
+    padding: 20px;
+    color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card:hover .card-front {
+    transform: rotateY(180deg);
+  }
+  
+  .card:hover .card-back {
+    transform: rotateY(0deg);
+  }
+  
+  .btn {
+    background-color: #121212;
+    color: #00e5ff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  .btn:hover {
+    background-color: #00e5ff;
+    color: #121212;
+  }
+  
+  /* Contact Section */
+  form input, form textarea {
+    width: 80%;
+    margin: 10px auto;
+    padding: 15px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  form button {
+    padding: 10px 20px;
+    background-color: #00e5ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  
+  form button:hover {
+    background-color: #0099cc;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1e1e1e;
+  }
+  

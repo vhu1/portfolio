@@ -1,17 +1,21 @@
-// Loading screen functionality
-window.addEventListener("load", () => {
-    const loadingScreen = document.getElementById("loading-screen");
-    setTimeout(() => {
-        loadingScreen.classList.add("hidden");
-    }, 1500); // Keep the loading screen for 2.5 seconds
-});
-
-// Smooth scrolling functionality
-document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", function(e) {
-        e.preventDefault();
-        const targetID = this.getAttribute("href");
-        const targetSection = document.querySelector(targetID);
-        targetSection.scrollIntoView({ behavior: "smooth" });
+// Typed.js initialization for the typing effect
+document.addEventListener("DOMContentLoaded", function() {
+    var typed = new Typed("#typed-name", {
+      strings: ["Bhuwan Raj Baral"],
+      typeSpeed: 100,
+      backSpeed: 50,
+      loop: false
     });
-});
+  });
+  
+  // Initialize AOS (Animate on Scroll)
+  AOS.init({
+    duration: 1200,
+    once: true,
+  });
+  
+  // GSAP for cube hover effect
+  document.querySelector("#cube").addEventListener("mouseover", () => {
+    gsap.to("#cube", { duration: 2, rotateY: "+=360", ease: "elastic" });
+  });
+  
